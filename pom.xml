@@ -70,10 +70,10 @@
 					</excludes>
 				</configuration>
 				<plugin>
-                                <groupId>org.apache.maven.plugins</groupId>
-                                <artifactId>maven-resources-plugin</artifactId>
-                                <version>3.1.0</version>
-                        </plugin>
+                                	<groupId>org.apache.maven.plugins</groupId>
+                                	<artifactId>maven-resources-plugin</artifactId>
+                                	<version>3.1.0</version>
+                        	</plugin>
 			</plugin>
 		</plugins>
 	</build>
@@ -81,6 +81,6 @@
 		<id>deploymentRepo</id>
 		<name>Nexus Repository</name>
 		<url>http://172.20.10.4:8081/repository/maven-releases/</url>
-</distributionManagement>
+	</distributionManagement>
 
 </project>
