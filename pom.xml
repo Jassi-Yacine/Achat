@@ -80,7 +80,6 @@
 	<distributionManagement>
 <id>deploymentRepo</id>
 <url>http://172.20.10.4:8081/repository/maven-releases/</url>
-
 </distributionManagement>
 
 </project>
