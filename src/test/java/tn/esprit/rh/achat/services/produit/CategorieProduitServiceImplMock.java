@@ -24,7 +24,7 @@ import tn.esprit.rh.achat.entities.CategorieProduit;
 import tn.esprit.rh.achat.repositories.CategorieProduitRepository;
 import tn.esprit.rh.achat.services.CategorieProduitServiceImpl;
 
-@SpringBootTest
+//@SpringBootTest
 @ExtendWith(MockitoExtension.class)
 class CategorieProduitServiceImplMock {
 

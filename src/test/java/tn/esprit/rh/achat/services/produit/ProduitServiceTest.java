@@ -8,8 +8,8 @@ import tn.esprit.rh.achat.services.IProduitService;
 
 import java.util.List;
 
-@SpringBootTest
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+//@SpringBootTest
+//@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ProduitServiceTest {
 
     @Autowired
