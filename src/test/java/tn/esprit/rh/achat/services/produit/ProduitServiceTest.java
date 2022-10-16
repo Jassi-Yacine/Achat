@@ -12,6 +12,7 @@ import java.util.List;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ProduitServiceTest {
 
+	/*
     @Autowired
     IProduitService ps;
 
@@ -22,5 +23,5 @@ public class ProduitServiceTest {
         Assertions.assertEquals(0, listProduits.size());
     }
 
-
+*/
 }
