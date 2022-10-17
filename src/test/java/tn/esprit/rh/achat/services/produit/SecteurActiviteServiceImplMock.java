@@ -21,7 +21,6 @@ import tn.esprit.rh.achat.entities.SecteurActivite;
 import tn.esprit.rh.achat.repositories.SecteurActiviteRepository;
 import tn.esprit.rh.achat.services.SecteurActiviteServiceImpl;
 
-//@SpringBootTest
 @ExtendWith(MockitoExtension.class)
 
 class SecteurActiviteServiceImplMock {
@@ -30,11 +29,11 @@ class SecteurActiviteServiceImplMock {
 	SecteurActiviteRepository secteurActiviteRepository;
 	@InjectMocks
 	SecteurActiviteServiceImpl secteurActiviteServiceImpl;
-	//on a creer un objet sa pour tester avec
+	//on a initialiser un objet sa pour tester avec
 	SecteurActivite sa = new SecteurActivite((long) 2 ,"cinq","secteur",null);
 	List<SecteurActivite> secteur = new ArrayList<SecteurActivite>() {
 		{
-		add (new SecteurActivite((long) 3 ,"quatre","secteur2",null));
+		add (new SecteurActivite((long) 3 ,"quatre","secteur2", null));
 		add (new SecteurActivite((long) 4 , "sept","secteur3", null));
 		add (new SecteurActivite((long) 5, "vingt","secteur5", null));
 
@@ -46,9 +45,11 @@ class SecteurActiviteServiceImplMock {
 	@Test
 	void testRetrieveAllSecteurActivite() {
 
+		
 		Mockito.doReturn(secteur).when(secteurActiviteRepository).findAll();
         List<SecteurActivite> secteurAc = secteurActiviteServiceImpl.retrieveAllSecteurActivite();
 		Assertions.assertNotNull(secteurAc);	
+
 
 		
 	}	
@@ -60,16 +61,14 @@ class SecteurActiviteServiceImplMock {
 		Mockito.when(secteurActiviteRepository.save(Mockito.any(SecteurActivite.class))).thenReturn(sa);
 	    SecteurActivite sec=secteurActiviteServiceImpl.addSecteurActivite(sa);
 		Assertions.assertNotNull(sec);	
-
 	}
 	
 	@Test
 	void testDeleteSecteurActivite() {
 
 		secteurActiviteServiceImpl.deleteSecteurActivite((long)2);
-		secteurActiviteServiceImpl.deleteSecteurActivite((long)2);
+		Mockito.verify(secteurActiviteRepository).deleteById((long)2);
 
-		Mockito.verify(secteurActiviteRepository, times(2)).deleteById((long)2);
 		
 	}
 	
