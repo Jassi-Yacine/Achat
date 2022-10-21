@@ -2,25 +2,26 @@ version: "3"
 services:
   spring-jdbc:
     image: mariemayadi/achat
+    ports:
+      - "8089:8089"
+    networks:
+      - employee-mysql
     environment:
-        SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/achatdb?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+        SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb/achatdb
         SPRING_DATASOURCE_USERNAME: root
         SPRING_DATASOURCE_PASSWORD: 
-    ports:
-     - "8089:8089"
-    networks:
-     - achat-mysql
     depends_on:
       - mysqldb
  
   mysqldb:
     image: mysql:8
     networks:
-     - achat-mysql
+      - employee-mysql
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=achatdb
     security_opt:
-    - seccomp:unconfined
+      - seccomp:unconfined
+
 networks:
-  achat-mysql:
+  employee-mysql: 
