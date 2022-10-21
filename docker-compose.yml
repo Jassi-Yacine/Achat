@@ -20,12 +20,11 @@ services:
     depends_on:
       - mysqldb
     environment:
-      - MYSQL_DATABASE=achatdb
-      - MYSQL_HOST=mysqldb
-      - MYSQL_USERNAME=root
-      - MYSQL_PASSWORD=
+      - SPRING_DATASOURCE_DATABASE=achatdb
+      - SPRING_DATASOURCE_HOST=mysqldb
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=
       - MYSQL_PORT=3306
       
 networks:
   achat-network:
-    name: achat-network 
