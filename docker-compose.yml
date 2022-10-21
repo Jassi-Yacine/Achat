@@ -1,7 +1,7 @@
 version: "3"
 services:
   mysqldb:
-    image: mysql:8
+    image: mysql
     networks:
       - achat-network
     environment:
