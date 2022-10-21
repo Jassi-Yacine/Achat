@@ -26,9 +26,7 @@ services:
       - seccomp:unconfined
       
   angular:
-    build:
-      context: ./front
-      dockerfile: Dockerfile
+    image: yacine96/angachat
     ports:
       - "4200:80"
     networks:
