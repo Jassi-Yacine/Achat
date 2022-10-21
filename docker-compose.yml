@@ -1,0 +1,29 @@
+version: "3"
+services:
+  spring-jdbc:
+    build:
+      context: ./
+      dockerfile: dockerfile
+    ports:
+      - "8082:8082"
+    networks:
+      - achat-net
+    environment:
+        SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb/springcloud
+        SPRING_DATASOURCE_USERNAME: root
+        SPRING_DATASOURCE_PASSWORD: root
+    depends_on:
+      - mysqldb
+ 
+  mysqldb:
+    image: mysql:8
+    networks:
+      - achat-net
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=achatdb
+    security_opt:
+      - seccomp:unconfined
+
+networks:
+  achat-net: 
