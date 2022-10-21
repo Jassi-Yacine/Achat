@@ -16,8 +16,8 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=achatdb
+    security_opt:
+      - seccomp:unconfined
     volumes:
       - /home/mysql/data:/var/lib/mysql
-    security_opt:
-      - seccomp:unconfined
    
