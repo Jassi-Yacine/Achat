@@ -16,8 +16,8 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=achatdb
-    security_opt:
-      - seccomp:unconfined
+    ports:
+      - "3306:3306"
     volumes:
       - my-datavolume:/var/lib/mysql
 volumes:
