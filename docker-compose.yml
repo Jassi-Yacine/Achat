@@ -4,6 +4,8 @@ services:
     image: yacine96/spring
     ports:
       - "8089:8089"
+    networks:
+      - app-net
     environment:
         SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/achatdb?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
         SPRING_DATASOURCE_USERNAME: root
@@ -13,13 +15,15 @@ services:
  
   mysqldb:
     image: mysql:8
+    networks:
+      - app-net
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=achatdb
-    ports:
-      - "3306:3306"
     volumes:
       - my-datavolume:/var/lib/mysql
 volumes:
   my-datavolume:
+networks:
+  app-net:
    
