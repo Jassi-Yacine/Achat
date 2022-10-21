@@ -1,21 +1,31 @@
 version: "3"
 services:
+  mysqldb:
+    image: mysql:8
+    networks:
+      - achat-network
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=achatdb
+    ports:
+      - "3306:3306"
+    restart: always
+
   achat-jdbc:
     image: mariemayadi/achat
     ports:
       - "8089:8089"
     networks:
-      - achat-mysql
+      - achat-network
     depends_on:
       - mysqldb
- 
-  mysqldb:
-    image: mysql:8
-    networks:
-      - achat-mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=achatdb
-
+      - MYSQL_HOST=mysqldb
+      - MYSQL_USERNAME=root
+      - MYSQL_PASSWORD=
+      - MYSQL_PORT=3306
+      
 networks:
-  achat-mysql: 
+  achat-network:
+    name: achat-network 
