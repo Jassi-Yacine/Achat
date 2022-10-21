@@ -1,11 +1,11 @@
 version: "3"
 services:
   mysqldb:
-    image: mysql
+    image: mysql:8
     networks:
       - achat-network
     environment:
-      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_ALLOW_EMPTY_PASSWORD:1
       - MYSQL_DATABASE=achatdb
 
   achat-jdbc:
