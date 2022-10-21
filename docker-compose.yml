@@ -19,5 +19,7 @@ services:
     security_opt:
       - seccomp:unconfined
     volumes:
-      - /home/mysql/data:/var/lib/mysql
+      - my-datavolume:/var/lib/mysql
+volumes:
+  my-datavolume:
    
