@@ -1,11 +1,11 @@
 version: "3"
 services:
   spring-jdbc:
-    image: yacine96/achat
+    image: test2
     ports:
       - "8089:8089"
     networks:
-      - achat-net
+      - employee-mysql
     environment:
         SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb/achatdb
         SPRING_DATASOURCE_USERNAME: root
@@ -16,16 +16,13 @@ services:
   mysqldb:
     image: mysql:8
     networks:
-      - achat-net
+      - employee-mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_ALLOW_EMPTY_PASSWORD:1
       - MYSQL_DATABASE=achatdb
     security_opt:
       - seccomp:unconfined
-    volumes:
-      - db:/var/lib/mysql
+
 
 networks:
-  achat-net:
-volumes:
-  db:
+  employee-mysql:
