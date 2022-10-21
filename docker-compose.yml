@@ -24,6 +24,6 @@ services:
       - MYSQL_DATABASE=achatdb
     security_opt:
       - seccomp:unconfined
-
+      
 networks:
   employee-mysql:
