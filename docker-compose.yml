@@ -1,19 +1,14 @@
 version: "3"
 services:
   mysqldb:
-    container_name: mysqldb
     image: mysql:8
     networks:
       - achat-network
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=achatdb
-    ports:
-      - "3306:3306"
-    restart: always
 
   achat-jdbc:
-    container_name: achat-spring
     image: mariemayadi/achat
     ports:
       - "8089:8089"
@@ -25,9 +20,6 @@ services:
       - SPRING_DATASOURCE_URL:jdbc:mysql://mysqldb/achatdb 
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
-      - MYSQL_PORT=3306
-    links:
-         - mysqldb
       
 networks:
   achat-network:
