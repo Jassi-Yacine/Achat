@@ -22,10 +22,12 @@ services:
     depends_on:
       - mysqldb
     environment:
-      - SPRING_HOST=mysqldb
+      - SPRING_DATASOURCE_URL:jdbc:mysql://mysqldb/achatdb 
       - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=
+      - SPRING_DATASOURCE_PASSWORD=root
       - MYSQL_PORT=3306
+    links:
+         - mysqldb
       
 networks:
   achat-network:
