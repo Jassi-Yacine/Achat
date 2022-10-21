@@ -15,8 +15,6 @@ services:
  
   mysqldb:
     image: mysql:8
-    volumes:
-      -  /home/mysql/mariemdata:/var/lib/mysql
     networks:
       - employee-mysql
     environment:
