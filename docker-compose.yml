@@ -24,6 +24,13 @@ services:
       - MYSQL_DATABASE=achatdb
     security_opt:
       - seccomp:unconfined
+     
+  angular:
+    image: mariemayadi/cifront
+    ports:
+      - "4200:80"
+    networks:
+      - net-mysql
 
 networks:
   net-mysql: 
