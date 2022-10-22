@@ -1,37 +1,35 @@
 version: "3"
 services:
-  spring-jdbc:
-    image: yacine96/achat
-    ports:
-      - "8089:8089"
+
+  mysqldb:
+    image: mysql:8
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=achatdb
+    volumes:
+      -  /home/mysql/data:/var/lib/mysql
     networks:
-      - employee-mysql
+      - ci-net
+ 
+  spring-service:
+    image: yacine96/achat
     environment:
         SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb/achatdb
         SPRING_DATASOURCE_USERNAME: root
         SPRING_DATASOURCE_PASSWORD: root
+    ports:
+      - "8089:8089"
+    networks:
+      - ci-net
     depends_on:
       - mysqldb
- 
-  mysqldb:
-    image: mysql:8
-    volumes:
-      -  /home/mysql/data:/var/lib/mysql
-    networks:
-      - employee-mysql
-    environment:
-      - MYSQL_ALLOW_EMPTY_PASSWORD:1
-      - MYSQL_DATABASE=achatdb
-    security_opt:
-      - seccomp:unconfined
       
-  angular:
+  angular-service:
     image: yacine96/angachat
     ports:
       - "4200:80"
     networks:
-      - employee-mysql
-
+      - ci-net
 
 networks:
-  employee-mysql:
+  ci-net:
