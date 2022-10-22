@@ -1,7 +1,7 @@
 version: "3"
 services:
   spring-achat:
-    image: abc
+    image: mariemayadi/ciachat
     ports:
       - "8089:8089"
     networks:
