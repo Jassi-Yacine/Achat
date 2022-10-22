@@ -1,7 +1,7 @@
 version: "3"
 services:
   spring-jdbc:
-    image: mariemayadi/achat
+    image: abc
     ports:
       - "8089:8089"
     networks:
