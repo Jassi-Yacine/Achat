@@ -1,11 +1,11 @@
 version: "3"
 services:
-  spring-jdbc:
+  spring-achat:
     image: abc
     ports:
       - "8089:8089"
     networks:
-      - employee-mysql
+      - net-mysql
     environment:
         SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb/achatdb
         SPRING_DATASOURCE_USERNAME: root
@@ -15,8 +15,10 @@ services:
  
   mysqldb:
     image: mysql:8
+    volumes:
+      -  /home/mysql/mariemdata:/var/lib/mysql:rw
     networks:
-      - employee-mysql
+      - net-mysql
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=achatdb
@@ -24,4 +26,4 @@ services:
       - seccomp:unconfined
 
 networks:
-  employee-mysql: 
+  net-mysql: 
