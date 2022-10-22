@@ -18,7 +18,7 @@ services:
     networks:
       - employee-mysql
     environment:
-      - MYSQL_ALLOW_EMPTY_PASSWORD:1
+      - MYSQL_ALLOW_EMPTY_PASSWORD:root
       - MYSQL_DATABASE=achatdb
     security_opt:
       - seccomp:unconfined
