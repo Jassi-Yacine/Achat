@@ -23,6 +23,5 @@ services:
     security_opt:
       - seccomp:unconfined
 
-
 networks:
-  employee-mysql:
+  employee-mysql: 
