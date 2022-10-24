@@ -1,8 +1,9 @@
-FROM node:latest
+#Stage1
+FROM node:latest AS node
 WORKDIR /app
-COPY package.json .
-COPY package-lock.json .
-RUN npm install --legacy-peer-deps
-COPY . . 
-EXPOSE 4200
-CMD /app/node_modules/.bin/ng serve --host 0.0.0.0 --disableHostCheck
+COPY . .
+RUN npm install
+RUN npm build --prod
+#Stage2
+FROM nginx:alpine
+COPY --from=node /app/dist/crudtuto-Front /usr/share/nginx/html
