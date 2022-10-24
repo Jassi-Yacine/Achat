@@ -1,9 +1,9 @@
 #Stage 1
-FROM node:16-alpine AS builder
+FROM node:16.14.2 as build-stage
 WORKDIR /app
-ADD package*.json /app/
+COPY ["package.json", "package-lock.json*", "./"]
 RUN npm install --legacy-peer-deps
-ADD ./ /app/
+COPY . /app
 ARG configuration=production
 RUN npm run ng build -- --output-path=dist --configuration=$ENVIROMENT --verbose
 
