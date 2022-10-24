@@ -1,5 +1,5 @@
 #Stage 1
-FROM node:14.15.0 as build-stage
+FROM node as build-stage
 WORKDIR /app
 ADD package*.json /app/
 RUN npm install --legacy-peer-deps
