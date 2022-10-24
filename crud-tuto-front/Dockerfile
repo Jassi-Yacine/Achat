@@ -1,5 +1,5 @@
 # Stage 1, "build-stage", based on Node.js, to build and compile the frontend
-FROM node:latest as build
+FROM node as build
 WORKDIR /app
 COPY ["package.json", "package-lock.json*", "./"]
 RUN npm install --legacy-peer-deps
