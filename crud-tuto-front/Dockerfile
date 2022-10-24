@@ -1,5 +1,5 @@
 #Stage 1
-FROM node:16.18.0-alpine3.15 AS build-stage
+FROM node:16.18.0-alpine3.15
 WORKDIR /app
 COPY ["package.json", "package-lock.json*", "./"]
 RUN npm install --legacy-peer-deps
