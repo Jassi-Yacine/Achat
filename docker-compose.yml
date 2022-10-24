@@ -25,5 +25,12 @@ services:
     restart: unless-stopped
     networks:
       - ci-net
+  
+  angular-service:
+    image: ibrahimbouafif99/front
+    ports:
+      - "4200:80"
+    networks:
+      - ci-net
 networks:
   ci-net:
