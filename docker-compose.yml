@@ -22,8 +22,6 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=achatdb
-    security_opt:
-      - seccomp:unconfined
      
   angular:
     image: mariemayadi/cifront
