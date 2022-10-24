@@ -1,10 +1,8 @@
-#Stage1
-FROM node:alpine as node
+FROM node:alpine
 WORKDIR /app
-COPY . .
+COPY package.json .
+COPY package-lock.json .
 RUN npm install
-RUN npm run build --prod
-
-#Stage2
-FROM nginx:alpine
-COPY --from=node /app/dist/crudtuto-Front /usr/share/nginx/html
+COPY . . 
+EXPOSE 4200
+CMD /app/node_modules/.bin/ng serve --host 0.0.0.0 --disableHostCheck
