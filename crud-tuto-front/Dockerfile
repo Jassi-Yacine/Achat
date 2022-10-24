@@ -1,5 +1,5 @@
 #Stage1
-FROM node:latest as nodestage
+FROM node:latest as node
 WORKDIR /app
 COPY . .
 RUN npm install
@@ -7,4 +7,4 @@ RUN npm run build --prod
 
 #Stage2
 FROM nginx:alpine
-COPY --from=nodestage /app/dist/crudtuto-Front /usr/share/nginx/html
+COPY --from=node /app/dist/crudtuto-Front /usr/share/nginx/html
