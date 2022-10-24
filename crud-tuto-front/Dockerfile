@@ -1,5 +1,5 @@
 #Stage 1
-FROM node as build-stage
+FROM node:16-alpine AS builder
 WORKDIR /app
 ADD package*.json /app/
 RUN npm install --legacy-peer-deps
