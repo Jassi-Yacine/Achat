@@ -6,10 +6,11 @@ services:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=achatdb
       - MYSQL_PASSWORD=root
+    restart: unless-stopped
     volumes:
       -  /home/mysql/data:/var/lib/mysql
     networks:
-      - ci-net  
+      - ci-net 
 
   spring-service:
     image: ibrahimbouafif99/achat
@@ -21,6 +22,7 @@ services:
       -SPRING_DATASOURCE_PASSWORD : root
     depends_on:
       - mysqldb
+    restart: unless-stopped
     networks:
       - ci-net
 networks:
